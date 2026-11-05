@@ -1,0 +1,29 @@
+[package]
+name = "script-paper"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tao = "0.34"
+wry = "0.54"
+muda = "0.17"
+rfd = "0.15"
+serde_json = "1"
+
+[features]
+verify = ["dep:block2"]
+
+[dependencies.block2]
+version = "0.6"
+optional = true
+[dependencies.objc2-app-kit]
+version = "0.3"
+[dependencies.objc2-foundation]
+version = "0.3"
+
+[dependencies.objc2-web-kit]
+version = "0.3"
+default-features = false
+features = ["WKSnapshotConfiguration"]
+[dependencies.objc2]
+version = "0.6"

@@ -1,0 +1,39 @@
+:root{color-scheme:light;--paper:#faf9f5;--ink:#282725;--accent:#80523b}*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--paper);color:var(--ink)}body{display:flex}main{flex:1;overflow:auto;padding:56px 44px}#paper{outline:none;min-height:calc(100vh - 112px);margin:auto;white-space:pre-wrap;overflow-wrap:break-word;caret-color:var(--accent)}.line{min-height:1.9em}.blank{min-height:1em}.scene{break-after:avoid}.character{break-after:avoid}.parenthetical{break-after:avoid}body[data-layout=zh] #paper{font:18px/1.9 'Kaiti SC','STKaiti','Songti SC',serif;max-width:34em}body[data-layout=zh] .character{float:left;clear:left;width:3.4em;overflow-wrap:anywhere}body[data-layout=zh] .dialogue,body[data-layout=zh] .parenthetical{margin-left:3.4em}body[data-layout=zh] .action,body[data-layout=zh] .scene,body[data-layout=zh] .transition,body[data-layout=zh] .blank{clear:both}body[data-layout=zh] .transition{text-align:right}body[data-layout=zh] .extension{display:none}body[data-layout=zh] .dialogue[data-extension]:before{content:attr(data-extension)}body[data-layout=en] #paper{font:12pt/1.25 Courier,'Courier New',monospace;width:60ch;max-width:60ch}body[data-layout=en] .line{min-height:1.25em}body[data-layout=en] .character{margin-left:22ch}body[data-layout=en] .dialogue{margin-left:10ch;width:35ch}body[data-layout=en] .parenthetical{margin-left:16ch;width:25ch}body[data-layout=en] .transition{text-align:right}body[data-layout=ja] #paper{font:18px/2 'Hiragino Mincho ProN','YuMincho',serif;writing-mode:vertical-rl;height:20em;min-height:20em;width:max-content;max-width:none;line-break:strict;word-break:normal;text-orientation:mixed;margin:0 0 0 auto}body[data-layout=ja] .line{min-height:0;min-width:2em;max-height:20em}body[data-layout=ja] .action{padding-inline-start:3em}body[data-layout=ja] .dialogue{padding-inline-start:1em;text-indent:-1em}body[data-layout=ja] main{direction:rtl}body[data-layout=ja] #paper{direction:ltr}body[data-layout=ja] .tcy{text-combine-upright:all;-webkit-text-combine:horizontal}.pair{white-space:nowrap}@page{size:A4;margin:22mm 20mm}@media print{html,body{height:auto;background:var(--paper);display:block}#rail{display:none!important}main{padding:0;overflow:visible}#paper{min-height:0!important;margin:0 auto}body[data-layout=ja] #paper{width:auto;height:20em;max-width:170mm}body[data-layout=ja] main{direction:ltr}.line{break-inside:avoid}}
+
+body[data-layout=zh] .parenthetical{float:left;margin-left:0;min-height:0}body[data-layout=zh] .character:has(+ .parenthetical){min-height:1.9em}body[data-layout=ja] .character,body[data-layout=ja] .parenthetical,body[data-layout=ja] .dialogue{display:inline;min-width:0;padding:0;text-indent:0}body[data-layout=ja] .character:after{content:"　"}body[data-layout=ja] .extension{display:none}body[data-layout=ja] .dialogue[data-extension]:before{content:attr(data-extension)}
+#print-pages{display:none}
+@media print{body[data-layout=ja] main{display:none}body[data-layout=ja] #print-pages{display:block}.print-page{position:relative;width:612px;height:360px;overflow:hidden;break-after:page;margin-left:auto}.print-page:last-child{break-after:auto}.print-paper{position:absolute;top:0;font:18px/2 'Hiragino Mincho ProN','YuMincho',serif;writing-mode:vertical-rl;height:360px;white-space:pre-wrap;overflow-wrap:break-word;line-break:strict;word-break:normal;text-orientation:mixed}.print-paper .line{break-inside:auto}}
+
+#find{position:fixed;top:10px;right:14px;z-index:2}#find[hidden]{display:none}#find input{font:13px/1.4 -apple-system,sans-serif;width:200px;padding:4px 8px;border:1px solid #d8d4c8;border-radius:5px;background:#fff;color:var(--ink);outline:none}#find input:focus{border-color:var(--accent)}#find.miss input{border-color:#b84a3a}
+@media print{#find{display:none!important}main{zoom:1!important}}
+
+#rail{position:fixed;z-index:3;left:0;top:0;bottom:0;width:250px;pointer-events:none;font:11.5px/1 ui-monospace,'SF Mono',Menlo,monospace;letter-spacing:.06em;color:#8a857a;transition:opacity .45s ease}
+#rail .col{position:absolute;inset:0;overflow:hidden;padding:42vh 16px 42vh 18px;-webkit-mask:linear-gradient(transparent 5%,#000 17%,#000 83%,transparent 95%);mask:linear-gradient(transparent 5%,#000 17%,#000 83%,transparent 95%)}
+#rail .col::-webkit-scrollbar{display:none}
+#rail button{display:flex;align-items:center;gap:10px;height:14px;margin:0 0 10px;border:0;background:none;padding:0;font:inherit;color:inherit;letter-spacing:inherit;cursor:pointer;white-space:nowrap;max-width:216px;pointer-events:auto;text-align:left}
+#rail i{flex:0 0 auto;width:9px;height:1px;background:#cfcabd;transition:width .3s ease,background .3s ease}
+#rail span{opacity:0;overflow:hidden;text-overflow:ellipsis;transition:opacity .3s ease,color .2s ease}
+#rail .sec i{width:15px;background:#9d978a}
+#rail .sec.l1{margin-top:10px}#rail .sec.l1 i{width:19px}
+#rail .sec span{color:var(--ink)}
+#rail .near i{width:13px;background:#a8a295}
+#rail .current i{width:26px;background:var(--accent)}
+#rail .above,#rail .below,#rail .title{display:none}
+#rail.open{pointer-events:auto;background:linear-gradient(90deg,var(--paper) 82%,rgba(250,249,245,0))}
+#rail.open .col{overflow-y:auto}
+#rail.open span{opacity:.72}
+#rail.open .current span{opacity:1;color:var(--accent)}
+#rail.open button:hover span,#rail .file:hover{opacity:1;color:var(--accent)}
+#rail.open .above,#rail.open .below,#rail.open .title{display:block}
+#rail .file{display:block;height:auto;line-height:14px;overflow:hidden;text-overflow:ellipsis}
+#rail .title{color:var(--ink);font-weight:600;margin:14px 0 14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:216px}
+#rail .below{margin-top:14px}
+body.typing #rail:not(.open){opacity:0}
+body.pinned main{padding-left:270px}
+.line.section{color:var(--accent);letter-spacing:.14em;font-size:.82em;padding-block-start:1.2em;break-after:avoid}
+body[data-layout=zh] .section{clear:both}
+#rail.open .col{padding-top:14vh;padding-bottom:14vh;-webkit-mask:linear-gradient(transparent,#000 6%,#000 94%,transparent);mask:linear-gradient(transparent,#000 6%,#000 94%,transparent)}
+
+.line.cover{color:#8a857c;font-size:.86em;clear:both}.line.cover+.blank{min-height:1.6em}
+#print-cover{display:none}
+@media print{.line.cover{display:none}.line.cover+.blank{display:none}#print-cover{display:flex;flex-direction:column;height:253mm;break-after:page;color:var(--ink);font:18px/1.9 'Kaiti SC','STKaiti','Songti SC',serif}body[data-layout=en] #print-cover{font:12pt/1.6 Courier,'Courier New',monospace}body[data-layout=ja] #print-cover{font:18px/2 'Hiragino Mincho ProN','YuMincho',serif}.cv-title{margin-top:28%;text-align:center;font-size:2em;font-weight:600;letter-spacing:.12em}.cv-middle{margin-top:2.4em;text-align:center}.cv-foot{margin-top:auto;font-size:.85em}}
